@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    var goToQuestion = function(){
+      if (event.keyCode == 13)
+      var qstn_no = $('#go-to-qstn').val();
+      qstn_y_pos = $('#qstn-list>li').eq(parseInt(qstn_no)).position().top;
+      debugger
+      $("body, html").animate({
+        scrollTop: qstn_y_pos
+      }, 600);
+    };
+  </script>
+</head>
+<body>
+<div class="container">
+  <div class="form-group affix" style="right: 0;">
+    <input type="text" id="go-to-qstn" class="pull-right" onkeyup="goToQuestion()">
+    <label for="go-to-qstn" class="pull-right">Go To Qstn no</label>
+  </div>
+  <section>
+    <ol id="qstn-list">
+      <li class="col-sm-12">
+        <section class="question">
+          <article>
+            <div role="tabpanel" class="tab-pane fade in active " id="match-decription">
+              <h3>Count negative numbers</h3>
+              <p><b>Objective</b> -&nbsp;This challenge will help you in getting familiarity with arrays and operators which
+                will be helpful when you will solve further problems on Techgig.<br><br><b>Task</b> -&nbsp;For this
+                challenge, you will be given an array and you are asked to count how many numbers are negative.<br><br><b>Input
+                  Format</b> -&nbsp;you will be taking a number as an input from stdin which tells about the length of the
+                array. On another line, array elements should be there with single space between them.<br><br><b>Output
+                  Format</b> - print the count to the stdout.<br><br><b>Sample Input </b>- <br>7<br>-8 -7 6 0 7 1
+                6<br><br><b>Sample Output</b> -&nbsp;2<br><br><b>Explanation</b> -&nbsp;<br>There are two negative numbers
+                present in the array.<br></p>
+              <p></p>
+            </div>
+          </article>
+        </section>
+        <section class="answer">
+          <button type="button" class="col-sm-12 btn btn-info" data-toggle="collapse" data-target="#answer1">Show/Hide Answer
+          </button>
+          <article id="answer1" class="collapse">
+            <pre>
+              def main()
+              neg_count = 0
+              gets.to_i
+              puts gets.scan('-').length
+              end
+              main()
+            </pre>
+          </article>
+        </section>
+      </li>
+    </ol>
+  </section>
+</div>
+</body>
+</html>
