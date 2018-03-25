@@ -17,6 +17,14 @@
       }, 600);
     };
   </script>
+  <style type="text/css">
+    .answer {
+      margin-bottom: 60px;
+    }
+    .answer .answer-content {
+      padding-top: 35px;
+    }
+  </style>
 </head>
 <body>
 <div class="container">
@@ -27,9 +35,9 @@
   <section>
     <ol id="qstn-list">
       <li class="col-sm-12">
-        <section class="question">
+        <section class="question" id='question1'>
           <article>
-            <div role="tabpanel" class="tab-pane fade in active " id="match-decription">
+            <div role="tabpanel" class="tab-pane fade in active">
               <h3>Count negative numbers</h3>
               <p><b>Objective</b> -&nbsp;This challenge will help you in getting familiarity with arrays and operators which
                 will be helpful when you will solve further problems on Techgig.<br><br><b>Task</b> -&nbsp;For this
@@ -46,15 +54,85 @@
         <section class="answer">
           <button type="button" class="col-sm-12 btn btn-info" data-toggle="collapse" data-target="#answer1">Show/Hide Answer
           </button>
-          <article id="answer1" class="collapse">
-            <pre>
-              def main()
-              neg_count = 0
-              gets.to_i
-              puts gets.scan('-').length
-              end
-              main()
-            </pre>
+          <article id="answer1" class="collapse answer-content">
+            <div class="panel panel-default">
+              <div class="panel-heading">Language: C</div>
+              <div class="panel-body">
+                <pre>
+                  def main()
+                  neg_count = 0
+                  gets.to_i
+                  puts gets.scan('-').length
+                  end
+                  main()
+                </pre>
+              </div>
+            </div>
+          </article>
+        </section>
+      </li>
+      <li>
+        <section class="question" id='question2'>
+          <article>
+            <div role="tabpanel" class="tab-pane fade in active">
+              <h3>Count negative numbers</h3>
+              <p><b>Objective</b> -&nbsp;Given an array arr[] and a number k. The task is to delete k elements which are smaller than next element (i.e., we delete arr[i] if arr[i] < arr[i+1]) or become smaller than next because next element is deleted.
+                <br><br>
+                <div class="panel panel-default">
+                  <div class="panel-heading">Examples</div>
+                  <div class="panel-body">
+                    <pre>
+                      Input       : arr[] = { 3, 100, 1 }
+                                    k = 1
+                      Output      : 100, 1
+                      Explanation : arr[0] < arr[1] means 3 is less than
+                                    100, so delete 3
+
+                      Input       : arr[] = {20, 10, 25, 30, 40}
+                                    k = 2
+                      Output      : 25 30 40
+                      Explanation : First we delete 10 because it follows
+                                    arr[i] < arr[i+1]. Then we delete 20
+                                    because 25 is moved next to it and it
+                                    also starts following the condition.
+
+                      Input       : arr[] = { 23, 45, 11, 77, 18}
+                                    k = 3
+                      Output      : 77, 18
+                      Explanation : We delete 23, 45 and 11 as they follow  
+                                    the condition arr[i] < arr[i+1]
+                    </pre>
+                  </div>
+                </div></p>
+              <p></p>
+              <p></p>
+            </div>
+          </article>
+        </section>
+        <section class="answer">
+          <button type="button" class="col-sm-12 btn btn-info" data-toggle="collapse" data-target="#answer2">Show/Hide Answer
+          </button>
+          <article id="answer2" class="collapse answer-content">
+            <div class="panel panel-default">
+              <div class="panel-heading">Language: Ruby</div>
+              <div class="panel-body">
+                <pre>
+                  def remove_small_elem(arr)
+                    arr.each.with_index do |elem, index|
+                      if index == arr.length - 1
+                        return arr
+                      else
+                        if elem < arr[index+1]
+                          arr.delete_at(index)
+                          return remove_small_elem(arr)
+                          break
+                        end
+                      end
+                    end
+                  end
+                </pre>
+              </div>
+            </div>
           </article>
         </section>
       </li>
