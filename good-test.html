@@ -136,6 +136,66 @@
           </article>
         </section>
       </li>
+      <li class="col-sm-12">
+        <section class="question" id='question3'>
+          <article>
+            <div role="tabpanel" class="tab-pane fade in active">
+              <h3>Finding pallindromes</h3>
+              <p><b>Objective</b> -&nbsp;Need to find pallindromes in a string. But need to find all the pallindromes which are not substring of another pallindrome in the string</p>
+              <p></p>
+            </div>
+          </article>
+        </section>
+        <section class="answer">
+          <button type="button" class="col-sm-12 btn btn-info" data-toggle="collapse" data-target="#answer1">Show/Hide Answer
+          </button>
+          <article id="answer3" class="collapse answer-content">
+            <div class="panel panel-default">
+              <div class="panel-heading">Language: Ruby</div>
+              <div class="panel-body">
+                <pre>
+                  def f1
+                    str = gets.chomp
+                    results = {}
+                    min_max_arr = []
+                    i = 0
+                    for i in 0..(str.length-2)
+                      for j in (i+1)..str.length
+                        substr = str[i..j]
+                        results[substr] = (i..j) if substr == substr.reverse
+                      end
+                    end
+                    results
+                    res_arr = results.to_a
+                    finalized = false
+                    while !finalized do
+                      deleted = false
+                      for i in 0..(res_arr.length-2)
+                        for j in (i+1)..(res_arr.length-1)
+                          finalized = true if i == (res_arr.length-2) && j == (res_arr.length-1)
+                          if res_arr[i][1].all? { |element| res_arr[j][1].cover?(element) }
+                            res_arr.delete_at(i)
+                            deleted = true
+                          elsif res_arr[j][1].all? { |element| res_arr[i][1].cover?(element) }
+                            res_arr.delete_at(j)
+                            deleted = true
+                          end
+                          break if deleted
+                        end
+                        break if deleted
+                      end
+                    end
+                    print "#{res_arr.reverse.map{|arr|
+                      arr[0]
+                    }.join(', ')}\n"
+                  end
+                  f1
+                </pre>
+              </div>
+            </div>
+          </article>
+        </section>
+      </li>
     </ol>
   </section>
 </div>
