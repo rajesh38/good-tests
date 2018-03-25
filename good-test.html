@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="scripts/libraries/handlebars-v4.0.11.js"></script>
+  <script src="scripts/app.js"></script>
   <script>
     var goToQuestion = function(){
       if (event.keyCode == 13)
@@ -113,10 +115,8 @@
           <button type="button" class="col-sm-12 btn btn-info" data-toggle="collapse" data-target="#answer2">Show/Hide Answer
           </button>
           <article id="answer2" class="collapse answer-content">
-            <div class="panel panel-default">
-              <div class="panel-heading">Language: Ruby</div>
-              <div class="panel-body">
-                <pre>
+            <div id="answer2-content" class="answer-hb-content">
+              {{#panel 'Language: Ruby' "
                   def remove_small_elem(arr)
                     arr.each.with_index do |elem, index|
                       if index == arr.length - 1
@@ -129,10 +129,31 @@
                         end
                       end
                     end
-                  end
-                </pre>
-              </div>
+                  end"}}
+              {{/panel}}
             </div>
+            <!-- <script id='answer2-handlebar' type="text/x-handlebars-template">
+              <div class="panel panel-default">
+                <div class="panel-heading">Language: Ruby</div>
+                <div class="panel-body">
+                  <pre>
+                    def remove_small_elem(arr)
+                      arr.each.with_index do |elem, index|
+                        if index == arr.length - 1
+                          return arr
+                        else
+                          if elem < arr[index+1]
+                            arr.delete_at(index)
+                            return remove_small_elem(arr)
+                            break
+                          end
+                        end
+                      end
+                    end
+                  </pre>
+                </div>
+              </div>
+            </script> -->
           </article>
         </section>
       </li>
@@ -147,13 +168,11 @@
           </article>
         </section>
         <section class="answer">
-          <button type="button" class="col-sm-12 btn btn-info" data-toggle="collapse" data-target="#answer1">Show/Hide Answer
+          <button type="button" class="col-sm-12 btn btn-info" data-toggle="collapse" data-target="#answer3">Show/Hide Answer
           </button>
           <article id="answer3" class="collapse answer-content">
-            <div class="panel panel-default">
-              <div class="panel-heading">Language: Ruby</div>
-              <div class="panel-body">
-                <pre>
+            <div class="answer-hb-content">
+              {{#panel 'Language: Ruby' "
                   def f1
                     str = gets.chomp
                     results = {}
@@ -185,13 +204,12 @@
                         break if deleted
                       end
                     end
-                    print "#{res_arr.reverse.map{|arr|
+                    print \"#{res_arr.reverse.map{|arr|
                       arr[0]
-                    }.join(', ')}\n"
+                    }.join(', ')}\\n\"
                   end
-                  f1
-                </pre>
-              </div>
+                  f1"}}
+              {{/panel}}
             </div>
           </article>
         </section>

@@ -1,6 +1,0 @@
-def main()
-  neg_count = 0
-  gets.to_i
-  puts gets.scan('-').length
-end
-main()
